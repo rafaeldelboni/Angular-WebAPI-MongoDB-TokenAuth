@@ -1,7 +1,7 @@
-MovieHunter: Angular-WebAPI-MongoDB
+MovieHunter: Angular-WebAPI-MongoDB-TokenAuth
 ================================
 
-Sample beginner Angular application using NancyFx + MongoDB for the Web API. 
+Sample beginner Angular application using NancyFx + MongoDB + Nancy.Authentication.Token. 
 
 This is a complete rewrite of the [original fork!](https://github.com/DeborahK/Angular-MovieHunter-WebAPI) Using **Nancy.Hosting.Aspnet** and MongoDB with the new **MongoDB.Driver 2.0.X** that I did for study purpose.
 

@@ -7,6 +7,7 @@ using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.TinyIoc;
 using MovieHunter.API.Models;
+using Nancy.Authentication.Token;
 
 namespace MovieHunter.API
 {
@@ -21,6 +22,7 @@ namespace MovieHunter.API
 		}
 		protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
 		{
+			TokenAuthentication.Enable(pipelines, new TokenAuthenticationConfiguration(container.Resolve<ITokenizer>()));
 
 			//CORS Enable
 			pipelines.AfterRequest.AddItemToEndOfPipeline ((ctx) => {
@@ -46,6 +48,8 @@ namespace MovieHunter.API
 
 				container.Register<MongoClient>(client);
 				container.Register<IMongoDatabase>(database);
+
+				container.Register<ITokenizer>(new Tokenizer());
 			}
 			catch {
 				throw;
@@ -54,11 +58,16 @@ namespace MovieHunter.API
 
 		private async Task<bool> CollectionExistsAsync(IMongoDatabase database, string collectionName)
 		{
-			var filter = new BsonDocument("name", collectionName);
-			//filter by collection name
-			var collections = await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filter });
-			//check for existence
-			return (await collections.ToListAsync()).Any();
+			try {
+				var filter = new BsonDocument("name", collectionName);
+				//filter by collection name
+				var collections = await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filter });
+				//check for existence
+				return (await collections.ToListAsync()).Any();
+			}
+			catch {
+				throw;
+			}
 		}
 
 		private async void firstTimeInstallDataBase (IMongoDatabase database, string rootPath){

@@ -50,6 +50,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Nancy.Authentication.Token">
+      <HintPath>..\packages\Nancy.Authentication.Token.1.2.0\lib\net40\Nancy.Authentication.Token.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
@@ -80,6 +83,9 @@
     <Compile Include="Modules\MoviesModule.cs" />
     <Compile Include="Models\ActorDAO.cs" />
     <Compile Include="Models\MovieDAO.cs" />
+    <Compile Include="Models\UserDAO.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Modules\AuthModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\movies.json" />
