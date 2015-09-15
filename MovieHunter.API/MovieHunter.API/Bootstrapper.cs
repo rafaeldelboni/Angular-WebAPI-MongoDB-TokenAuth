@@ -61,9 +61,9 @@ namespace MovieHunter.API
 			try {
 				var filter = new BsonDocument("name", collectionName);
 				//filter by collection name
-				var collections = await database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filter });
+				var collections = database.ListCollectionsAsync(new ListCollectionsOptions { Filter = filter });
 				//check for existence
-				return (await collections.ToListAsync()).Any();
+				return (await collections.Result.ToListAsync()).Any();
 			}
 			catch {
 				throw;
