@@ -1,21 +1,33 @@
-﻿<div class="row">
-    <div class="col-md-offset-4 col-md-4">
+﻿<div ng-controller="loginFormCtrl">
 
-		<form name="loginForm" ng-controller="loginFormCtrl" class="form-signin" 
-		      ng-submit="login(credentials)" novalidate>
+	<div class="row" >
+	    <div class="col-md-offset-4 col-md-4">
 
-		  <h2 class="form-signin-heading">Please sign in</h2>
+			<form name="loginForm"  data-ng-init="init()" class="form-signin" 
+			      ng-submit="login(credentials)" novalidate form-autofill-fix>
 
-		  <label for="username" class="sr-only">Username:</label>
-		  <input type="text" id="username" class="form-control" placeholder="Username" 
-		         ng-model="credentials.username">
+			  <h2 class="form-signin-heading">Please sign in</h2>
 
-		  <label for="password" class="sr-only">Password</label>
-		  <input type="password" id="password" class="form-control" placeholder="Password" 
-		         ng-model="credentials.password">
+			  <label for="username" class="sr-only">Username:</label>
+			  <input type="text" id="username" class="form-control" placeholder="Username" 
+			         ng-model="credentials.username">
 
-		  <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-		</form>
+			  <label for="password" class="sr-only">Password</label>
+			  <input type="password" id="password" class="form-control" placeholder="Password" 
+			         ng-model="credentials.password">
 
-    </div>
+			  <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+
+			</form>
+
+	    </div>
+
+	</div>
+
+	<div class="row" >
+	    <div class="col-md-4 col-md-offset-4">
+			<div class="bg-danger" style="text-align: center"><h4>{{ loginMessage }}</h4></div>
+	    </div>
+	</div>
+
 </div>

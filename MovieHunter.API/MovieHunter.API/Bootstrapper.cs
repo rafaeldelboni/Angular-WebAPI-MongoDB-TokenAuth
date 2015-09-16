@@ -26,10 +26,10 @@ namespace MovieHunter.API
 
 			//CORS Enable
 			pipelines.AfterRequest.AddItemToEndOfPipeline ((ctx) => {
-				ctx.Response.WithHeader ("Access-Control-Allow-Origin", "*")
-						.WithHeader ("Access-Control-Allow-Methods", "PUT,DELETE,POST,GET")
-						.WithHeader ("Access-Control-Allow-Headers", "Accept, Origin, Content-type");
-
+				ctx.Response
+					.WithHeader ("Access-Control-Allow-Origin", "*")
+					.WithHeader ("Access-Control-Allow-Methods", "PUT,DELETE,POST,GET")
+					.WithHeader ("Access-Control-Allow-Headers", "Accept, Authorization, Origin, Content-type");
 			});
 		}
 

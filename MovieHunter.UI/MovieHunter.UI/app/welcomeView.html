@@ -17,4 +17,14 @@
             <a href="http://krysta-kurata.squarespace.com/">krysta-kurata.squarespace.com/</a>
         </div>
     </div>
+    <div class="row">
+        <div ng-if="currentUser">Welcome, {{ currentUser.id }}</div>
+
+		<div ng-repeat="role in currentUser.role">
+			<div ng-show="role == userRoles.admin">You're admin</div>
+			<div ng-show="role == userRoles.editor">You're editor</div>
+		</div>
+
+		<div >You're annon</div>
+    </div>
 </div>

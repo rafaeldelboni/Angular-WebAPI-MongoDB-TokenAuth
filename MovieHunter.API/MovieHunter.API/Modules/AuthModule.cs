@@ -29,7 +29,7 @@ namespace MovieHunter.API.Modules
 					id = token,
 					user = new {
 						id = userIdentity.UserName,
-						roles = userIdentity.Claims
+						role = userIdentity.Claims
 					}
 				};
 			};
