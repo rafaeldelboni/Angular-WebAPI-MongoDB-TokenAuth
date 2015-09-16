@@ -13,15 +13,15 @@ namespace MovieHunter.API.Models
 		static UserDAO()
 		{
 			Users.Add(new Tuple<string, string>("demo", "demo"));
-			Claims.Add("demo", new List<string> { "demo", "admin" });
+			Claims.Add("demo", new List<string> { "guest", "admin" });
 
 			Users.Add(new Tuple<string, string>("nonadmin", "nonadmin"));
-			Claims.Add("nonadmin", new List<string> { "demo", });
+			Claims.Add("nonadmin", new List<string> { "guest", });
 		}
 
-		public static IUserIdentity ValidateUser(string userName, string password)
+		public static IUserIdentity ValidateUser(User login)
 		{
-			var user =  Users.FirstOrDefault(x => x.Item1 == userName && x.Item2 == password);
+			var user =  Users.FirstOrDefault(x => x.Item1 == login.UserName && x.Item2 == login.Password);
 			if (user == null)
 			{
 				return null;

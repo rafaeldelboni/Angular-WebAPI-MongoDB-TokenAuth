@@ -37,9 +37,6 @@
     </MonoDevelop>
   </ProjectExtensions>
   <ItemGroup>
-    <Content Include="Scripts\angular-mocks.js" />
-    <Content Include="Scripts\angular.js" />
-    <Content Include="Scripts\angular.min.js" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
@@ -67,25 +64,34 @@
     <Content Include="app\movieSearch\searchByTitleCtrl.js" />
     <Content Include="app\movieSearch\searchByTitleView.html" />
     <Content Include="images\filmhunterlogo.png" />
-    <Content Include="Scripts\angular-route.js" />
-    <Content Include="Scripts\angular-route.min.js" />
     <Content Include="app\movieForm\movieFormView.html" />
-    <Content Include="app\common\common.services.js" />
-    <Content Include="Scripts\angular-resource.js" />
-    <Content Include="Scripts\angular-resource.min.js" />
     <Content Include="app\common\movieResource.js" />
     <Content Include="app\common\actorResource.js" />
     <Content Include="app\helpers\ng-really.js" />
     <Content Include="app\movieForm\actorFormView.html" />
     <Content Include="app\movieForm\movieFormCtrl.js" />
     <Content Include="app\movieForm\actorFormCtrl.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
+    <Content Include="Scripts\angular-resource.js" />
+    <Content Include="Scripts\angular-resource.min.js" />
+    <Content Include="Content\signin.css" />
+    <Content Include="app\userAuth\loginForm.html" />
+    <Content Include="app\userAuth\loginFormCtrl.js" />
+    <Content Include="app\common\authResource.js" />
+    <Content Include="app\common\common.services.js" />
+    <Content Include="app\common\sessionService.js" />
+    <Content Include="app\appCtrl.js" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="Content\bootstrap-theme.css.map" />
     <None Include="Content\bootstrap.css.map" />
     <None Include="fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\angular-route.min.js.map" />
     <None Include="Scripts\angular-resource.min.js.map" />
   </ItemGroup>
@@ -93,5 +99,6 @@
     <Folder Include="app\movieForm\" />
     <Folder Include="app\common\" />
     <Folder Include="app\helpers\" />
+    <Folder Include="app\userAuth\" />
   </ItemGroup>
 </Project>

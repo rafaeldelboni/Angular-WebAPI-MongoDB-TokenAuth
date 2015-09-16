@@ -8,9 +8,10 @@
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/bootstrap-theme.css" rel="stylesheet" />
     <link href="Content/app.css" rel="stylesheet" />
+    <link href="Content/signin.css" rel="stylesheet" />
 </head>
 
-<body ng-app="movieHunter">
+<body ng-app="movieHunter" ng-controller="appCtrl">
     <nav class="navbar navbar-inverse">
         <div class="container">
             <a class="navbar-brand" href="#/">InStep Movie Hunter</a>
@@ -47,17 +48,23 @@
     <script src="app/app.js"></script>
 
     <!-- Controllers -->
+    <script src="app/appCtrl.js"></script>
     <script src="app/movieSearch/searchByTitleCtrl.js"></script>
     <script src="app/movieSearch/searchByActorCtrl.js"></script>
     <script src="app/movieDetail/actorDetailCtrl.js"></script>
     <script src="app/movieDetail/movieDetailCtrl.js"></script>
     <script src="app/movieForm/movieFormCtrl.js"></script>
     <script src="app/movieForm/actorFormCtrl.js"></script>
+    <script src="app/userAuth/loginFormCtrl.js"></script>
 
     <!-- Resources -->
     <script src="app/common/common.services.js"></script>
     <script src="app/common/actorResource.js"></script>
     <script src="app/common/movieResource.js"></script>
+    <script src="app/common/authResource.js"></script>
+
+    <!-- Services -->
+    <script src="app/common/sessionService.js"></script>
 
     <!-- Helpers -->
     <script src="app/helpers/ng-really.js"></script>

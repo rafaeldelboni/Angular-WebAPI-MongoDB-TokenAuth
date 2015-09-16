@@ -3,6 +3,7 @@ using Nancy.Security;
 using Nancy.Authentication.Token;
 using MongoDB.Driver;
 using MovieHunter.API.Models;
+using Nancy.ModelBinding;
 
 namespace MovieHunter.API.Modules
 {
@@ -12,10 +13,9 @@ namespace MovieHunter.API.Modules
 		{
 			Post["/"] = x =>
 			{
-				var userName = (string)this.Request.Form.UserName;
-				var password = (string)this.Request.Form.Password;
+				User user = this.Bind<User>(); // Nancy.ModelBinding
 
-				var userIdentity = UserDAO.ValidateUser(userName, password);
+				var userIdentity = UserDAO.ValidateUser(user);
 
 				if (userIdentity == null)
 				{
@@ -26,7 +26,11 @@ namespace MovieHunter.API.Modules
 
 				return new
 				{
-					Token = token,
+					id = token,
+					user = new {
+						id = userIdentity.UserName,
+						roles = userIdentity.Claims
+					}
 				};
 			};
 

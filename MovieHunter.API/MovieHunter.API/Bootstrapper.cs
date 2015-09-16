@@ -71,27 +71,31 @@ namespace MovieHunter.API
 		}
 
 		private async void firstTimeInstallDataBase (IMongoDatabase database, string rootPath){
+			try {
+				if (!CollectionExistsAsync (database, "actors").Result) {
+					await database.CreateCollectionAsync ("actors");
 
-			if (!CollectionExistsAsync (database, "actors").Result) {
-				await database.CreateCollectionAsync ("actors");
+					var actors = new ActorRepository();
+					foreach (Actor actor in actors.Retrieve(rootPath))
+					{
+						var collectionActors = database.GetCollection<Actor>("actors");
+						await collectionActors.InsertOneAsync(actor);
+					}
+				}
 
-				var actors = new ActorRepository();
-				foreach (Actor actor in actors.Retrieve(rootPath))
-				{
-					var collectionActors = database.GetCollection<Actor>("actors");
-					await collectionActors.InsertOneAsync(actor);
+				if (!CollectionExistsAsync (database, "movies").Result) {
+					await database.CreateCollectionAsync ("movies");
+
+					var movies = new MovieRepository();
+					foreach (Movie movie in movies.Retrieve(rootPath))
+					{
+						var collectionActors = database.GetCollection<Movie>("movies");
+						await collectionActors.InsertOneAsync(movie);
+					}
 				}
 			}
-
-			if (!CollectionExistsAsync (database, "movies").Result) {
-				await database.CreateCollectionAsync ("movies");
-
-				var movies = new MovieRepository();
-				foreach (Movie movie in movies.Retrieve(rootPath))
-				{
-					var collectionActors = database.GetCollection<Movie>("movies");
-					await collectionActors.InsertOneAsync(movie);
-				}
+			catch {
+				throw;
 			}
 		}
 
